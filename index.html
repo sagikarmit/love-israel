@@ -16,104 +16,118 @@
 
         body { font-family: 'Assistant', sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; transition: 0.3s; }
         
-        /* הגדרות נגישות מופעלות ע"י JS */
+        /* --- הגדרות נגישות מופעלות --- */
         body.high-contrast { background: #000 !important; color: #fff !important; }
         body.high-contrast section, body.high-contrast div, body.high-contrast .schedule-card { background: #000 !important; color: #fff !important; border: 2px solid #fff !important; }
         body.high-contrast a { color: #ffff00 !important; }
         body.underline-links a { text-decoration: underline !important; }
+        body.monochrome { filter: grayscale(100%); }
 
-        /* כפתור נגישות צף - מוגדל ובולט */
-        .acc-btn { 
-            position: fixed; 
-            bottom: 30px; 
-            right: 30px; 
-            background: var(--primary); 
-            color: white; 
-            width: 65px; 
-            height: 65px; 
-            border-radius: 50%; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            cursor: pointer; 
-            z-index: 9999; 
-            font-size: 2.2rem; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            border: 3px solid white;
+        /* --- סרגל נגישות צף ובולט --- */
+        .accessibility-trigger {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            border-radius: 10px 0 0 10px;
+            cursor: pointer;
+            z-index: 10000;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+            font-size: 24px;
+            border: 2px solid var(--white);
+            border-right: none;
         }
-        
-        /* תפריט נגישות */
-        .acc-menu { 
-            display: none; 
-            position: fixed; 
-            bottom: 110px; 
-            right: 30px; 
-            background: white; 
-            border: 2px solid var(--primary); 
-            padding: 25px; 
-            border-radius: 20px; 
-            z-index: 9999; 
-            width: 280px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3); 
+
+        .accessibility-sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            z-index: 10001;
+            transition: 0.4s;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
-        .acc-menu h3 { margin-top: 0; color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px; }
-        .acc-menu button { 
-            display: block; 
-            width: 100%; 
-            padding: 12px; 
-            margin-bottom: 12px; 
-            border: 1px solid #ddd; 
-            background: #fdfdfd; 
-            cursor: pointer; 
-            text-align: right; 
-            border-radius: 10px; 
-            font-weight: bold; 
+
+        .accessibility-sidebar.active { right: 0; }
+
+        .accessibility-sidebar h2 { 
+            font-size: 1.5rem; 
+            color: var(--primary); 
+            border-bottom: 2px solid var(--secondary); 
+            margin-bottom: 10px; 
+            padding-bottom: 10px;
+        }
+
+        .acc-btn {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: right;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
             font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
         }
-        .acc-menu button:hover { background: #eee; }
 
-        /* שאר העיצוב */
-        header { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo img { height: 100px; }
-        nav ul { list-style: none; display: flex; margin: 0; padding: 0; }
-        nav ul li { margin: 0 15px; }
+        .acc-btn:hover { background: #eee; border-color: var(--primary); }
+        .acc-close { background: #333; color: white; padding: 10px; text-align: center; cursor: pointer; border-radius: 5px; margin-top: auto; }
+
+        /* --- עיצוב האתר --- */
+        header { background: var(--white); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo img { height: 90px; }
+        nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
         nav ul li a { text-decoration: none; color: var(--primary); font-weight: bold; }
 
         .hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('1.jpg');
             background-size: cover; background-position: center;
-            height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; color: white;
         }
-        .hero h1 { font-size: 3.5rem; margin: 0; }
-        .hero p { font-size: 1.8rem; margin-top: 10px; font-weight: bold; }
+        .hero h1 { font-size: 3rem; margin: 0; }
 
-        section { padding: 60px 10%; }
-        .section-title { text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 40px; }
+        section { padding: 50px 10%; }
+        .section-title { text-align: center; color: var(--primary); font-size: 2.2rem; margin-bottom: 30px; }
 
-        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .schedule-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 25px rgba(0,0,0,0.05); border-top: 6px solid var(--secondary); }
-        .time-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px dashed #eee; }
-        .time-label { font-weight: bold; }
+        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .schedule-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--secondary); }
+        .time-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eee; }
 
-        .wa-float { position: fixed; bottom: 30px; left: 30px; background: var(--whatsapp); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; z-index: 9998; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .wa-float { position: fixed; bottom: 30px; left: 30px; background: var(--whatsapp); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 9999; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 10px; }
 
-        footer { background: var(--primary); color: white; text-align: center; padding: 30px; }
+        footer { background: var(--primary); color: white; text-align: center; padding: 25px; }
+        
+        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .accessibility-sidebar { width: 100%; right: -100%; } }
     </style>
 </head>
 <body>
 
-    <!-- כפתור נגישות צף - אמור להופיע בצד ימין למטה -->
-    <div class="acc-btn" onclick="toggleAccMenu()" title="תפריט נגישות" role="button" aria-haspopup="true">♿</div>
-    
-    <!-- תפריט הנגישות -->
-    <div class="acc-menu" id="accMenu">
-        <h3>הגדרות נגישות</h3>
-        <button onclick="changeFontSize(1.1)">הגדלת טקסט +</button>
-        <button onclick="changeFontSize(0.9)">הקטנת טקסט -</button>
-        <button onclick="toggleHighContrast()">ניגודיות גבוהה</button>
-        <button onclick="toggleLinksUnderline()">הדגשת קישורים</button>
-        <button onclick="resetAccessibility()" style="background:#fff1f0; color:#cf1322; border-color:#ffa39e;">איפוס הגדרות</button>
+    <!-- כפתור הנגישות הבולט בצד -->
+    <div class="accessibility-trigger" onclick="toggleAccessibility()" title="פתח תפריט נגישות">♿</div>
+
+    <!-- סרגל הנגישות הצדי -->
+    <div class="accessibility-sidebar" id="accSidebar">
+        <h2>תפריט נגישות</h2>
+        <button class="acc-btn" onclick="changeFontSize(1.1)">➕ הגדלת טקסט</button>
+        <button class="acc-btn" onclick="changeFontSize(0.9)">➖ הקטנת טקסט</button>
+        <button class="acc-btn" onclick="toggleHighContrast()">🌓 ניגודיות גבוהה</button>
+        <button class="acc-btn" onclick="toggleMonochrome()">🔳 שחור לבן</button>
+        <button class="acc-btn" onclick="toggleLinks()">🔗 הדגשת קישורים</button>
+        <button class="acc-btn" onclick="resetAcc()" style="color: #d32f2f;">🔄 איפוס הגדרות</button>
+        <div class="acc-close" onclick="toggleAccessibility()">סגור תפריט</div>
     </div>
 
     <header>
@@ -121,7 +135,6 @@
         <nav>
             <ul>
                 <li><a href="#schedule">זמנים</a></li>
-                <li><a href="#about">אודות</a></li>
                 <li><a href="#contact">מיקום</a></li>
             </ul>
         </nav>
@@ -129,12 +142,12 @@
 
     <main>
         <section class="hero">
-            <h1>בונים יחד את משכן הקבע</h1>
-            <p>קהילת אהבת ישראל – כאן הלב מרגיש בבית</p>
+            <h1>קהילת אהבת ישראל</h1>
+            <p><strong>משכן קבע בפסגות אפק, ראש העין</strong></p>
         </section>
 
         <section id="schedule" style="background: var(--light-bg);">
-            <h2 class="section-title">זמני תפילות ואירועים</h2>
+            <h2 class="section-title">זמני תפילות ושיעורים</h2>
             <div class="schedule-grid">
                 <div class="schedule-card">
                     <h3>ימי חול</h3>
@@ -144,13 +157,13 @@
                 </div>
                 <div class="schedule-card">
                     <h3>שבת קודש</h3>
-                    <div class="time-row"><span>מנחה ערב שבת</span> <strong>10 דק' מהדלקת נרות</strong></div>
-                    <div class="time-row"><span>שחרית שבת</span> <strong>08:00</strong></div>
+                    <div class="time-row"><span>מנחה ערב שבת</span> <strong>10 דק' לאחר הנרות</strong></div>
+                    <div class="time-row"><span>שחרית</span> <strong>08:00</strong></div>
                 </div>
                 <div class="schedule-card" style="border-top-color: var(--primary);">
                     <h3>אירועים קרובים</h3>
-                    <!-- זמן מעודכן לפי בקשת המשתמש -->
-                    <div class="time-row"><span>ערב קהילתי חגיגי (23.03)</span> <strong>21:30</strong></div>
+                    <!-- זמן מעודכן לפי הבקשה: 21:30 -->
+                    <div class="time-row"><span>ערב קהילתי (23.03)</span> <strong>21:30</strong></div>
                     <div class="time-row"><span>שיעור נשים שבועי</span> <strong>יום ג' 20:30</strong></div>
                 </div>
             </div>
@@ -159,12 +172,12 @@
         <section id="contact">
             <h2 class="section-title">איפה אנחנו?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-                <div>
-                    <p><strong>כתובת:</strong> אלוף הרב גורן 1, פסגות אפק, ראש העין</p>
+                <div class="info">
+                    <p><strong>כתובת:</strong> אלוף הרב גורן 1, ראש העין</p>
                     <p><strong>טלפון:</strong> 055-8830863</p>
                 </div>
                 <div class="map-container">
-                    <iframe src="https://maps.google.com/maps?q=אלוף%20הרב%20גורן%201%20ראש%20העין&t=&z=17&ie=UTF8&iwloc=&output=embed" width="100%" height="400" style="border-radius:15px; border:0;"></iframe>
+                    <iframe src="https://maps.google.com/maps?q=אלוף%20הרב%20גורן%201%20ראש%20העין&t=&z=17&ie=UTF8&iwloc=&output=embed" width="100%" height="350" style="border-radius:15px; border:0;"></iframe>
                 </div>
             </div>
         </section>
@@ -178,32 +191,24 @@
     <footer><p>© 2026 קהילת אהבת ישראל | love-israel.co.il</p></footer>
 
     <script>
-        function toggleAccMenu() {
-            const m = document.getElementById('accMenu');
-            m.style.display = (m.style.display === 'block') ? 'none' : 'block';
-        }
-        
-        let fSize = 1;
-        function changeFontSize(s) { 
-            fSize *= s; 
-            document.body.style.fontSize = fSize + 'em'; 
-        }
-        
-        function toggleHighContrast() { document.body.classList.toggle('high-contrast'); }
-        function toggleLinksUnderline() { document.body.classList.toggle('underline-links'); }
-        
-        function resetAccessibility() { 
-            document.body.className = ''; 
-            document.body.style.fontSize = '1em'; 
-            fSize = 1; 
+        function toggleAccessibility() {
+            document.getElementById('accSidebar').classList.toggle('active');
         }
 
-        // סגירת התפריט בלחיצה מחוץ לו
-        window.onclick = function(event) {
-            if (!event.target.matches('.acc-btn')) {
-                const m = document.getElementById('accMenu');
-                if (m.style.display === 'block') m.style.display = 'none';
-            }
+        let currentFontSize = 1;
+        function changeFontSize(action) {
+            currentFontSize *= action;
+            document.body.style.fontSize = currentFontSize + 'em';
+        }
+
+        function toggleHighContrast() { document.body.classList.toggle('high-contrast'); }
+        function toggleMonochrome() { document.body.classList.toggle('monochrome'); }
+        function toggleLinks() { document.body.classList.toggle('underline-links'); }
+
+        function resetAcc() {
+            document.body.className = '';
+            document.body.style.fontSize = '1em';
+            currentFontSize = 1;
         }
     </script>
 </body>
