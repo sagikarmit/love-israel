@@ -10,14 +10,14 @@
             --primary: #1a3a5f;
             --secondary: #d4af37;
             --whatsapp: #25d366;
-            --facebook: #1877F2;
+            --orange-donate: #ff8c00; /* כתום בולט לתרומות */
             --white: #ffffff;
             --light-bg: #f4f7f6;
             --focus: #0056b3;
-            --header-height: 160px; /* גובה משוער של התפריט לצורך קפיצה נכונה */
+            --header-height: 150px;
         }
 
-        /* נגישות - הגדרות מצב */
+        /* הגדרות נגישות */
         body.accessible-font { font-size: 1.2em; }
         body.high-contrast { background: #000 !important; color: #fff !important; }
         body.high-contrast * { background: #000 !important; color: #ffff00 !important; border-color: #ffff00 !important; }
@@ -26,74 +26,97 @@
 
         body { font-family: 'Assistant', sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; }
 
-        /* קישור דילוג */
-        .skip-link { position: absolute; top: -150px; right: 0; background: var(--secondary); color: white; padding: 15px; z-index: 2000; text-decoration: none; }
+        /* נגישות מקלדת */
+        .skip-link { position: absolute; top: -150px; right: 0; background: var(--secondary); color: white; padding: 15px; z-index: 2000; text-decoration: none; font-weight: bold; }
         .skip-link:focus { top: 0; }
         *:focus { outline: 3px solid var(--focus) !important; outline-offset: 3px; }
 
-        /* כותרת עליונה - מיושרת לימין */
+        /* תפריט עליון מיושר לימין */
         header { 
             background: var(--white); 
             padding: 10px 5%; 
             display: flex; 
-            justify-content: flex-start; /* הצמדה לימין ב-RTL */
+            justify-content: flex-start; 
             align-items: center; 
-            gap: 50px; /* רווח בין הלוגו לתפריט */
+            gap: 40px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
             position: sticky; 
             top: 0; 
             z-index: 1000; 
         }
-        .logo img { height: 120px; width: auto; display: block; }
+        .logo img { height: 110px; width: auto; display: block; }
 
         nav ul { list-style: none; display: flex; margin: 0; padding: 0; align-items: center; }
-        nav ul li { margin-left: 25px; } /* רווח בין פריטי התפריט */
-        nav ul li a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.1rem; transition: 0.2s; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.1rem; }
         nav ul li a:hover { color: var(--secondary); }
 
-        /* פתרון הסתרת הכותרת בקפיצה בין דפים */
-        section { 
-            padding: 60px 10%; 
-            scroll-margin-top: var(--header-height); /* מונע מהתפריט להסתיר את הכותרת */
-        }
-
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('1.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('1.jpg');
             background-size: cover; background-position: center;
-            height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            height: 65vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; color: white; padding: 0 20px;
         }
-        .hero h1 { font-size: clamp(2rem, 5vw, 4rem); margin: 0; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); font-weight: 800; margin: 0; text-shadow: 2px 2px 20px rgba(0,0,0,0.8); }
+        .hero p { font-size: clamp(1.2rem, 3vw, 2.1rem); margin-top: 20px; text-shadow: 1px 1px 12px rgba(0,0,0,0.7); }
 
+        section { 
+            padding: 60px 10%; 
+            scroll-margin-top: var(--header-height); 
+        }
         .section-title { text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 30px; }
-        .content-box { max-width: 950px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* תוכן אודות */
+        .content-box { max-width: 950px; margin: 0 auto; text-align: justify; font-size: 1.25rem; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
         /* הנהגת הקהילה */
-        .leadership-section { background: var(--light-bg); }
-        .rabbi-card { display: flex; align-items: center; gap: 40px; max-width: 950px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; }
-        .rabbi-card img { width: 200px; border-radius: 15px; border: 4px solid var(--secondary); }
+        .leadership-section { background: var(--light-bg); border-top: 5px solid var(--secondary); }
+        .rabbi-card { display: flex; align-items: center; gap: 40px; max-width: 950px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .rabbi-card img { width: 250px; height: auto; border-radius: 15px; border: 4px solid var(--secondary); }
+
+        /* טופס וואטסאפ */
+        .form-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 700px; margin: 0 auto; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--primary); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 1rem; box-sizing: border-box; }
+        .btn-submit { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 1.1rem; width: 100%; }
+
+        /* גלריה */
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+
+        /* תרומות ומסמכים */
+        .donation-card { background: white; border-radius: 20px; padding: 40px; text-align: center; max-width: 950px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .btn-donate { background: var(--orange-donate); color: white; padding: 20px 60px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.5rem; display: inline-block; margin-bottom: 25px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4); }
+        .btn-donate:hover { transform: scale(1.05); background: #e67e00; }
+        .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; border-top: 1px solid #eee; padding-top: 25px; }
+        .doc-btn { padding: 12px; border: 2px solid var(--primary); border-radius: 8px; text-decoration: none; color: var(--primary); font-weight: bold; text-align: center; }
+
+        /* צור קשר ומפה */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .map-container iframe { width: 100%; height: 400px; border-radius: 20px; border: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
 
         /* סרגל נגישות צף */
-        .a11y-toolbar { position: fixed; top: 140px; right: 10px; background: white; border: 2px solid var(--primary); border-radius: 10px; padding: 10px; z-index: 3000; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .a11y-toolbar { position: fixed; top: 120px; right: 10px; background: white; border: 2px solid var(--primary); border-radius: 10px; padding: 10px; z-index: 3000; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .a11y-btn { background: var(--primary); color: white; border: none; padding: 8px; cursor: pointer; border-radius: 5px; font-weight: bold; font-size: 0.8rem; }
-        .a11y-toggle { position: fixed; top: 140px; right: 10px; background: var(--primary); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 3001; font-size: 24px; }
+        .a11y-toggle { position: fixed; top: 120px; right: 10px; background: var(--primary); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; z-index: 3001; font-size: 24px; }
 
-        /* טופס */
-        .form-container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto; }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        .btn-submit { background: var(--primary); color: white; padding: 12px; border: none; border-radius: 25px; width: 100%; cursor: pointer; font-weight: bold; font-size: 1.1rem; }
+        /* Lightbox */
+        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 4000; justify-content: center; align-items: center; }
+        #lightbox img { max-width: 85%; max-height: 85%; border: 3px solid white; }
+        .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: white; border: none; font-size: 3rem; cursor: pointer; padding: 20px; border-radius: 50%; }
+        .prev-arrow { right: 20px; } .next-arrow { left: 20px; }
+        .close-lb { position: absolute; top: 20px; left: 20px; background: none; border: none; color: white; font-size: 3rem; cursor: pointer; }
 
-        .wa-float { position: fixed; bottom: 20px; left: 20px; background: var(--whatsapp); color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 2000; display: flex; align-items: center; gap: 8px; }
+        .wa-float { position: fixed; bottom: 30px; left: 30px; background: var(--whatsapp); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; z-index: 2000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
-        footer { background: var(--primary); color: white; text-align: center; padding: 20px; margin-top: 40px; }
+        footer { background: var(--primary); color: white; text-align: center; padding: 30px; }
 
         @media (max-width: 768px) {
             header { flex-direction: column; text-align: center; gap: 10px; }
             nav ul { flex-wrap: wrap; justify-content: center; }
-            nav ul li { margin: 5px 10px; }
-            .rabbi-card { flex-direction: column; }
+            .rabbi-card { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -113,9 +136,7 @@
     </div>
 
     <header role="banner">
-        <div class="logo">
-            <img src="logo.jpg" alt="לוגו קהילת אהבת ישראל">
-        </div>
+        <div class="logo"><img src="logo.jpg" alt="לוגו אהבת ישראל"></div>
         <nav role="navigation" aria-label="תפריט ראשי">
             <ul>
                 <li><a href="#about">אודות</a></li>
@@ -128,31 +149,37 @@
     </header>
 
     <main id="main-content">
+        <!-- כותרת ראשית -->
         <section class="hero">
-            <h1>בונים יחד את משכן הקבע</h1>
-            <p>קהילת אהבת ישראל - כאן הלב מרגיש בבית</p>
+            <h1>בונים יחד את משכן הקבע בפסגות אפק</h1>
+            <p><strong>קהילת אהבת ישראל – כאן הלב מרגיש בבית</strong></p>
         </section>
 
+        <!-- אודות הקהילה -->
         <section id="about">
             <h2 class="section-title">הקהילה שלנו</h2>
             <div class="content-box">
-                <p>קהילת אהבת ישראל כשמה כן היא, שמה לה למטרה להביא את כולם באהבה לקהילה שלנו - חברים, שכנים ומשפחות. אנו מונים כיום כ-200 בתי אב הפועלים מתוך תחושת שליחות ואחדות.</p>
+                <p>בקיץ של שנת 2016, עברו מספר משפחות לגור בביתם החדש בשכונת פסגות אפק בראש העין. בשנים הראשונות התנהלה התפילה בבית ספר ובגן ילדים, ובהמשך, הצליחו לגייס את המבנה הנוכחי שבו אנו מתפללים לבית הכנסת (מבנה ציבורי). בית הכנסת קם עם חזון של שיתופיות, קבלה, הכלה, ואווירה חמה. עולים חדשים, ישראלים ותיקים, אשכנזים וספרדים הקימו בית כנסת וקהילה שההתנדבות היא מרכיב מרכזי שלה. ברוח מאמצי המשפחות החלוציות הללו שרצו לבנות משהו יפה ביחד, נולדה קהילה פורחת ומשגשגת.</p>
+                <p>קהילת אהבת ישראל כשמה כן היא, שמה לה למטרה להביא את כולם באהבה לקהילה שלנו - חברים, שכנים, בעלים, שוכרים, משפחות ואורחים - לבוא ולהצטרף לפעילויות השונות שבית הכנסת מציע. ככל שנמשיך לגדול ולהתפתח, אנו נשארים מחוייבים לשמירה על אווירת אחדות בה כולם ירגישו רצויים, ומחוייבים להתנדב ולעזור.</p>
+                <p><strong>כיום אנחנו מונים כ-200 בתי אב מסוגים שונים. הערכים המנחים את מעשינו והחלטותינו הם שמירה על דרך ארץ, אהבת הארץ ונאמנות מלאה לתורת ישראל ולמצוותיה.</strong></p>
             </div>
         </section>
 
+        <!-- הנהגה -->
         <section id="leadership" class="leadership-section">
             <h2 class="section-title">הנהגת הקהילה</h2>
             <div class="rabbi-card">
                 <img src="image_7cca70.png" alt="הרב מרדכי מנע שליט"א">
-                <div>
+                <div class="rabbi-info">
                     <h3>הרב מרדכי מנע שליט"א</h3>
-                    <p>מוביל את הקהילה בהכוונה רוחנית ובבניית חיי קהילה מגובשים בשכונת פסגות אפק.</p>
+                    <p>מוביל את הקהילה בהכוונה רוחנית ובבניית חיי קהילה מגובשים בשכונה.</p>
                 </div>
             </div>
         </section>
 
-        <section id="simchas">
-            <h2 class="section-title">תיאום שמחות</h2>
+        <!-- טופס שמחות -->
+        <section id="simchas" style="background: var(--light-bg);">
+            <h2 class="section-title">שמחות ואירועים</h2>
             <div class="form-container">
                 <form id="simchaForm">
                     <div class="form-group">
@@ -166,41 +193,97 @@
                     <div class="form-group">
                         <label for="eventType">סוג האירוע:</label>
                         <select id="eventType">
-                            <option>בר מצווה</option>
-                            <option>ברית / זבד הבת</option>
-                            <option>אזכרה</option>
+                            <option value="בר מצווה">בר מצווה</option>
+                            <option value="ברית / זבד הבת">ברית / זבד הבת</option>
+                            <option value="עלייה לתורה">עלייה לתורה</option>
+                            <option value="אזכרה">אזכרה</option>
+                            <option value="אחר">אחר</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate">תאריך משוער:</label>
+                        <input type="date" id="eventDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="userMsg">בקשות מיוחדות:</label>
+                        <textarea id="userMsg" rows="3"></textarea>
                     </div>
                     <button type="button" class="btn-submit" onclick="sendToWhatsApp()">שליחת בקשה בוואטסאפ</button>
                 </form>
             </div>
         </section>
 
+        <!-- גלריה ותמונות -->
         <section id="gallery">
             <h2 class="section-title">חזון המשכן</h2>
-            <p style="text-align:center;">הדמיות של בית הכנסת החדש הנבנה בימים אלו.</p>
-            <!-- כאן תבוא הגלריה שלך -->
+            <div class="gallery">
+                <img src="1.jpg" alt="הדמיה 1" onclick="openLightbox(0)">
+                <img src="2.jpg" alt="הדמיה 2" onclick="openLightbox(1)">
+                <img src="3.jpg" alt="הדמיה 3" onclick="openLightbox(2)">
+                <img src="4.jpg" alt="הדמיה 4" onclick="openLightbox(3)">
+                <img src="5.jpg" alt="הדמיה 5" onclick="openLightbox(4)">
+                <img src="6.jpg" alt="הדמיה 6" onclick="openLightbox(5)">
+                <img src="7.jpg" alt="הדמיה 7" onclick="openLightbox(6)">
+            </div>
         </section>
 
+        <!-- תרומות ומסמכים -->
         <section id="donations" style="background: var(--light-bg);">
             <h2 class="section-title">תרומות ומסמכים</h2>
-            <div style="text-align:center;">
-                <a href="https://mrng.to/gevh48XXNf" class="btn-submit" style="text-decoration:none; display:inline-block; width:auto; padding:15px 40px; background:#b10000;">לתרומה מאובטחת לבניין הבית ➔</a>
+            <div class="donation-card">
+                <a href="https://mrng.to/gevh48XXNf" class="btn-donate" target="_blank">לתרומה מאובטחת (סעיף 46) ➔</a>
+                <div class="docs-grid">
+                    <a href="plans.pdf" target="_blank" class="doc-btn">תוכניות בנייה 📄</a>
+                    <a href="seif46.pdf" target="_blank" class="doc-btn">אישור סעיף 46 📄</a>
+                    <a href="takin.pdf" target="_blank" class="doc-btn">ניהול תקין 📄</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- צור קשר ומפה -->
+        <section id="contact">
+            <h2 class="section-title">מיקום וצור קשר</h2>
+            <div class="contact-grid">
+                <div class="info">
+                    <h3>כתובת המבנה:</h3>
+                    <p>אלוף הרב גורן 1, פסגות אפק, ראש העין</p>
+                    <h3>איש קשר לפניות:</h3>
+                    <p>שגיא עמוס: <a href="tel:0558830863" style="color: var(--primary); font-weight: bold;">055-8830863</a></p>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        title="מפה: אלוף הרב גורן 1, ראש העין"
+                        src="https://maps.google.com/maps?q=אלוף%20הרב%20גורן%201%20ראש%20העין&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
             </div>
         </section>
     </main>
 
+    <!-- Footer והצהרה -->
+    <div style="background: #333; color: white; padding: 20px 10%; font-size: 0.9rem; text-align: center;">
+        <strong>הצהרת נגישות:</strong> האתר מונגש ברמת AA. רכז נגישות: שגיא עמוס 055-8830863.
+    </div>
+
+    <footer><p>© 2026 קהילת אהבת ישראל | עמותה רשומה 580665420</p></footer>
+
+    <!-- WhatsApp צף -->
     <a href="https://wa.me/972558830863" class="wa-float" target="_blank">
-        <span>דברו איתנו</span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="20" alt="">
+        <span>וואטסאפ</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="25" alt="">
     </a>
 
-    <footer>
-        <p>© 2026 קהילת אהבת ישראל | עמותה רשומה 580665420</p>
-        <p style="font-size: 0.8rem;"><a href="#" style="color:white;">הצהרת נגישות</a> | רכז נגישות: שגיא עמוס 055-8830863</p>
-    </footer>
+    <!-- Lightbox Structure -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <button class="close-lb" onclick="closeLightbox()">×</button>
+        <button class="lb-arrow prev-arrow" onclick="event.stopPropagation(); changeImg(1)">❮</button>
+        <img id="lightbox-img" src="" alt="תמונה מוגדלת">
+        <button class="lb-arrow next-arrow" onclick="event.stopPropagation(); changeImg(-1)">❯</button>
+    </div>
 
     <script>
+        // לוגיקת נגישות
         function toggleA11yMenu() {
             const menu = document.getElementById('a11yMenu');
             menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
@@ -209,19 +292,50 @@
             const currentSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
             document.documentElement.style.fontSize = (currentSize * scale) + 'px';
         }
-        function toggleMode(className) {
-            document.body.classList.toggle(className);
+        function toggleMode(className) { document.body.classList.toggle(className); }
+        function resetA11y() { document.body.className = ''; document.documentElement.style.fontSize = ''; }
+
+        // לוגיקת גלריה (7 תמונות)
+        const images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg"];
+        let curIdx = 0;
+
+        function openLightbox(i) {
+            curIdx = i;
+            document.getElementById('lightbox-img').src = images[curIdx];
+            document.getElementById('lightbox').style.display = 'flex';
         }
-        function resetA11y() {
-            document.body.className = '';
-            document.documentElement.style.fontSize = '';
+        function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
+        function changeImg(s) {
+            curIdx = (curIdx + s + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[curIdx];
         }
+
+        // שליחת וואטסאפ עם כל השדות
         function sendToWhatsApp() {
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
-            if(!name || !phone) { alert("נא למלא שם וטלפון"); return; }
-            window.open(`https://wa.me/972558830863?text=שלום, אני ${name} מעוניין במידע על שמחה בקהילה`, '_blank');
+            const event = document.getElementById('eventType').value;
+            const date = document.getElementById('eventDate').value;
+            const msg = document.getElementById('userMsg').value;
+
+            if (!name || !phone) { alert("אנא מלאו שם וטלפון"); return; }
+
+            let messageText = `שלום, אני מעוניין במידע על שמחה בקהילה:%0A%0A`;
+            messageText += `*שם:* ${name}%0A*טלפון:* ${phone}%0A*סוג:* ${event}%0A`;
+            if(date) messageText += `*תאריך:* ${date}%0A`;
+            if(msg) messageText += `*הערות:* ${msg}`;
+
+            window.open(`https://wa.me/972558830863?text=${messageText}`, '_blank');
         }
+
+        // מקלדת לסגירת גלריה
+        document.addEventListener('keydown', (e) => {
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === "ArrowLeft") changeImg(-1);
+                if (e.key === "ArrowRight") changeImg(1);
+                if (e.key === "Escape") closeLightbox();
+            }
+        });
     </script>
 </body>
 </html>
