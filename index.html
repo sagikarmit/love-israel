@@ -16,67 +16,72 @@
 
         body { font-family: 'Assistant', sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; transition: 0.3s; }
         
-        /* --- מערכת נגישות מתקדמת (להגנה מתביעות) --- */
+        /* --- שכבות נגישות (CSS Classes) --- */
         body.high-contrast { background: #000 !important; color: #fff !important; }
-        body.high-contrast section, body.high-contrast div, body.high-contrast .card { background: #000 !important; color: #fff !important; border: 2px solid #fff !important; }
+        body.high-contrast section, body.high-contrast div, body.high-contrast .content-card { background: #000 !important; color: #fff !important; border: 2px solid #fff !important; }
         body.high-contrast a { color: #ffff00 !important; }
         body.underline-links a { text-decoration: underline !important; }
         body.monochrome { filter: grayscale(100%); }
-        body.readable-font { font-family: Arial, sans-serif !important; }
 
-        /* כפתור נגישות צף - בולט מאוד */
-        .acc-trigger {
+        /* --- סרגל נגישות קבוע וצף --- */
+        .acc-wrapper {
             position: fixed;
-            top: 40%;
+            top: 20%;
             right: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        /* הכפתור שתמיד רואים */
+        .acc-trigger {
             background: #0044cc;
             color: white;
             padding: 15px;
             border-radius: 10px 0 0 10px;
             cursor: pointer;
-            z-index: 10000;
-            box-shadow: -4px 0 15px rgba(0,0,0,0.3);
-            font-size: 28px;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+            font-size: 24px;
             border: 2px solid #fff;
             border-right: none;
         }
 
-        /* סרגל נגישות צדי */
+        /* הסרגל שנפתח ונסגר */
         .acc-sidebar {
-            position: fixed;
-            top: 0;
-            right: -320px;
-            width: 300px;
-            height: 100%;
+            width: 0;
+            height: auto;
+            max-height: 80vh;
             background: white;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.4);
-            z-index: 10001;
-            transition: 0.4s ease-in-out;
-            padding: 25px;
+            box-shadow: -5px 5px 20px rgba(0,0,0,0.2);
+            transition: 0.4s ease;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            overflow-y: auto;
+            border-radius: 0 0 0 15px;
         }
-        .acc-sidebar.active { right: 0; }
-        .acc-sidebar h2 { font-size: 1.4rem; color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px; margin-top: 0; }
+
+        .acc-wrapper.active .acc-sidebar {
+            width: 280px;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .acc-sidebar h2 { font-size: 1.3rem; color: var(--primary); margin-top: 0; border-bottom: 2px solid var(--secondary); padding-bottom: 10px; }
         
         .acc-btn {
-            background: #f4f4f4;
-            border: 1px solid #ddd;
+            background: #f9f9f9;
+            border: 1px solid #eee;
             padding: 12px;
             text-align: right;
             border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            margin-bottom: 10px;
+            display: block;
+            width: 100%;
         }
-        .acc-btn:hover { background: #e0e0e0; border-color: var(--primary); }
-        .acc-reset { background: #ff4d4f; color: white; border: none; margin-top: 20px; }
-        .acc-close { background: #333; color: white; border: none; margin-top: auto; }
+        .acc-btn:hover { background: #eee; }
+        .acc-reset { background: #fee; color: #c00; border-color: #fcc; }
 
         /* --- עיצוב האתר --- */
         header { background: var(--white); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
@@ -90,9 +95,10 @@
             height: 40vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white;
         }
         .hero h1 { font-size: 3rem; margin: 0; }
+        .hero p { font-size: 1.5rem; font-weight: 700; }
 
-        section { padding: 50px 10%; }
-        .section-title { text-align: center; color: var(--primary); font-size: 2.2rem; margin-bottom: 30px; }
+        section { padding: 60px 10%; }
+        .section-title { text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 40px; }
 
         .content-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 900px; margin: 0 auto; }
         
@@ -102,27 +108,25 @@
         .wa-float { position: fixed; bottom: 30px; left: 30px; background: var(--whatsapp); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 9999; box-shadow: 0 5px 15px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 10px; }
 
         footer { background: var(--primary); color: white; text-align: center; padding: 30px; }
-        .acc-statement { font-size: 0.8rem; margin-top: 15px; opacity: 0.8; }
+        .acc-notice { font-size: 0.8rem; margin-top: 10px; opacity: 0.8; }
 
-        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .rabbi-box { flex-direction: column; text-align: center; } .acc-sidebar { width: 100%; right: -100%; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 2rem; } .rabbi-box { flex-direction: column; text-align: center; } .acc-wrapper.active .acc-sidebar { width: 220px; } }
     </style>
 </head>
 <body>
 
-    <!-- כפתור נגישות בולט -->
-    <div class="acc-trigger" onclick="toggleAcc()" title="תפריט נגישות" aria-label="פתח תפריט נגישות">♿</div>
-
-    <!-- סרגל נגישות צדי -->
-    <div class="acc-sidebar" id="accSidebar" aria-label="סרגל נגישות">
-        <h2>תפריט נגישות</h2>
-        <button class="acc-btn" onclick="adjustFont(1.1)">➕ הגדלת טקסט</button>
-        <button class="acc-btn" onclick="adjustFont(0.9)">➖ הקטנת טקסט</button>
-        <button class="acc-btn" onclick="toggleContrast()">🌓 ניגודיות גבוהה</button>
-        <button class="acc-btn" onclick="toggleGray()">🔳 שחור לבן</button>
-        <button class="acc-btn" onclick="toggleLinks()">🔗 הדגשת קישורים</button>
-        <button class="acc-btn" onclick="toggleReadable()">🔤 גופן קריא</button>
-        <button class="acc-btn acc-reset" onclick="resetAll()">🔄 איפוס הגדרות</button>
-        <button class="acc-btn acc-close" onclick="toggleAcc()">סגור תפריט</button>
+    <!-- סרגל נגישות קבוע -->
+    <div class="acc-wrapper" id="accWrapper">
+        <div class="acc-sidebar" id="accSidebar">
+            <h2>נגישות</h2>
+            <button class="acc-btn" onclick="adjustFont(1.1)">➕ הגדלת טקסט</button>
+            <button class="acc-btn" onclick="adjustFont(0.9)">➖ הקטנת טקסט</button>
+            <button class="acc-btn" onclick="toggleContrast()">🌓 ניגודיות גבוהה</button>
+            <button class="acc-btn" onclick="toggleGray()">🔳 שחור לבן</button>
+            <button class="acc-btn" onclick="toggleLinks()">🔗 הדגשת קישורים</button>
+            <button class="acc-btn acc-reset" onclick="resetAll()">🔄 איפוס הגדרות</button>
+        </div>
+        <div class="acc-trigger" onclick="toggleSidebar()" title="תפריט נגישות">♿</div>
     </div>
 
     <header>
@@ -139,14 +143,14 @@
     <main>
         <section class="hero">
             <h1>קהילת אהבת ישראל</h1>
-            <p><strong>פסגות אפק, ראש העין</strong></p>
+            <p><strong>כאן הלב מרגיש בבית</strong></p>
         </section>
 
         <section id="about">
             <h2 class="section-title">אודות הקהילה</h2>
             <div class="content-card">
-                <p>קהילת אהבת ישראל בראש העין הוקמה בשנת 2016 עם תחילת אכלוס שכונת פסגות אפק. הקהילה מונה כיום כ-200 בתי אב ומהווה בית רוחני וחברתי חם לתושבי השכונה.</p>
-                <p>אנו פועלים לחיזוק האחדות והערבות ההדדית בקרב חברי הקהילה ומקדמים את הקמת משכן הקבע לבית הכנסת.</p>
+                <p>קהילת אהבת ישראל בראש העין הוקמה בשנת 2016. הקהילה מונה כיום כ-200 בתי אב ומהווה בית רוחני וחברתי חם לתושבי פסגות אפק.</p>
+                <p>אנו פועלים לחיזוק האחדות והערבות ההדדית ומקדמים את הקמת משכן הקבע לבית הכנסת בשכונה.</p>
             </div>
         </section>
 
@@ -157,7 +161,7 @@
                     <img src="image_7cca70.png" alt="הרב מרדכי מנע">
                     <div class="rabbi-info">
                         <h3>הרב מרדכי מנע שליט"א</h3>
-                        <p>הרב מרדכי מנע מוביל את הקהילה בהדרכה רוחנית ובמאור פנים. הרב זמין לשאלות הלכתיות, ייעוץ וליווי אישי לחברי הקהילה.</p>
+                        <p>הרב מרדכי מנע מוביל את הקהילה בהדרכה רוחנית ובמאור פנים מיום היווסדה. הרב זמין לשאלות הלכתיות וליווי אישי לחברי הקהילה.</p>
                     </div>
                 </div>
             </div>
@@ -184,20 +188,32 @@
 
     <footer>
         <p>© 2026 קהילת אהבת ישראל | love-israel.co.il</p>
-        <div class="acc-statement">
-            <strong>הצהרת נגישות:</strong> אתר זה עומד בדרישות תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג-2013, ברמה AA.
-        </div>
+        <div class="acc-notice">אתר זה מונגש ברמת AA למען חוויית גלישה שוויונית לכל חברי הקהילה.</div>
     </footer>
 
     <script>
-        function toggleAcc() { document.getElementById('accSidebar').classList.toggle('active'); }
+        function toggleSidebar() { 
+            document.getElementById('accWrapper').classList.toggle('active'); 
+        }
+        
         let fSize = 1;
         function adjustFont(s) { fSize *= s; document.body.style.fontSize = fSize + 'em'; }
         function toggleContrast() { document.body.classList.toggle('high-contrast'); }
         function toggleGray() { document.body.classList.toggle('monochrome'); }
         function toggleLinks() { document.body.classList.toggle('underline-links'); }
-        function toggleReadable() { document.body.classList.toggle('readable-font'); }
-        function resetAll() { document.body.className = ''; document.body.style.fontSize = '1em'; fSize = 1; }
+        function resetAll() { 
+            document.body.className = ''; 
+            document.body.style.fontSize = '1em'; 
+            fSize = 1; 
+        }
+
+        // סגירה בלחיצה מחוץ לסרגל
+        window.addEventListener('click', function(e) {
+            const wrapper = document.getElementById('accWrapper');
+            if (!wrapper.contains(e.target)) {
+                wrapper.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html>
