@@ -16,134 +16,134 @@
             --focus: #ffeb3b;
         }
 
-        body { font-family: 'Assistant', sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; }
-
-        /* נגישות */
-        .skip-link { position: absolute; top: -150px; right: 0; background: var(--secondary); color: white; padding: 10px; z-index: 2000; transition: 0.3s; }
-        .skip-link:focus { top: 0; }
-        *:focus { outline: 3px solid var(--focus) !important; outline-offset: 2px; }
+        body { font-family: 'Assistant', sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; transition: 0.3s; }
+        
+        /* מחלקות נגישות */
+        body.high-contrast { background: #000 !important; color: #fff !important; }
+        body.high-contrast section, body.high-contrast div, body.high-contrast .schedule-card { background: #000 !important; color: #fff !important; border: 1px solid #fff !important; }
+        body.high-contrast a { color: #ffff00 !important; }
+        body.underline-links a { text-decoration: underline !important; }
 
         header { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-        .logo img { height: 150px; width: auto; display: block; }
+        .logo img { height: 100px; width: auto; display: block; }
 
         nav ul { list-style: none; display: flex; margin: 0; padding: 0; align-items: center; }
-        nav ul li { margin: 0 15px; }
+        nav ul li { margin: 0 12px; }
         nav ul li a { text-decoration: none; color: var(--primary); font-weight: bold; font-size: 1.1rem; }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('1.jpg');
             background-size: cover; background-position: center;
-            height: 65vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
+            height: 55vh; display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; color: white; padding: 0 20px;
         }
-        .hero h1 { 
-            font-size: 4.8rem; font-weight: 800; margin: 0;
-            text-shadow: 2px 2px 20px rgba(0,0,0,0.8); line-height: 1.1;
-        }
-        .hero p { 
-            font-size: 2.1rem; 
-            margin-top: 20px; 
-            text-shadow: 1px 1px 12px rgba(0,0,0,0.7);
-        }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.9rem; font-weight: 800; margin-top: 15px; text-shadow: 1px 1px 10px rgba(0,0,0,0.5); }
 
         section { padding: 60px 10%; }
-        .section-title { text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 30px; }
+        .section-title { text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 40px; }
 
-        /* אודות ותוכן מאוחד */
-        .content-box { max-width: 950px; margin: 0 auto; text-align: justify; font-size: 1.25rem; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .content-box p { margin-bottom: 20px; }
+        /* לו"ז זמנים */
+        .schedule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
+        .schedule-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid var(--secondary); }
+        .schedule-card h3 { color: var(--primary); font-size: 1.6rem; margin-top: 0; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+        .time-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eee; font-size: 1.15rem; }
+        .time-row:last-child { border-bottom: none; }
+        .time-label { font-weight: bold; color: #555; }
+        .time-value { color: var(--primary); font-weight: 700; }
 
-        /* הנהגת הקהילה - סעיף נפרד */
-        .leadership-section { background: var(--light-bg); border-top: 5px solid var(--secondary); }
-        .rabbi-card { display: flex; align-items: center; gap: 40px; max-width: 950px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-        .rabbi-card img { width: 280px; height: auto; object-fit: cover; border-radius: 15px; border: 4px solid var(--secondary); }
-        .rabbi-info { flex: 1; }
-        .rabbi-info h3 { color: var(--primary); font-size: 2.2rem; margin: 0 0 15px 0; }
-        .rabbi-info p { font-size: 1.4rem; margin: 0; font-weight: 600; color: var(--primary); }
+        /* הנהגה */
+        .rabbi-card { display: flex; align-items: center; gap: 40px; max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .rabbi-card img { width: 220px; border-radius: 15px; border: 4px solid var(--secondary); }
 
-        /* טופס שמחות וואטסאפ */
-        .form-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 700px; margin: 0 auto; }
+        /* טופס */
+        .form-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 650px; margin: 0 auto; }
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; color: var(--primary); }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; font-size: 1rem; box-sizing: border-box; }
-        .btn-submit { background: var(--primary); color: white; padding: 15px 30px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; font-size: 1.1rem; width: 100%; transition: 0.3s; }
-        .btn-submit:hover { background: var(--secondary); }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-family: inherit; }
+        .btn-submit { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 30px; cursor: pointer; width: 100%; font-weight: bold; font-size: 1.2rem; transition: 0.3s; }
 
-        /* גלריה */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .gallery img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+        /* נגישות צפה */
+        .acc-btn { position: fixed; bottom: 30px; right: 30px; background: #333; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2000; font-size: 1.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .acc-menu { display: none; position: fixed; bottom: 100px; right: 30px; background: white; border: 1px solid #ddd; padding: 20px; border-radius: 15px; z-index: 2000; width: 260px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .acc-menu button { display: block; width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #eee; background: #f9f9f9; cursor: pointer; text-align: right; border-radius: 8px; font-weight: bold; }
 
-        /* תרומות ומסמכים */
-        .donation-card { background: white; border: 1px solid #ddd; border-radius: 20px; padding: 40px; text-align: center; max-width: 950px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .btn-donate { background: var(--secondary); color: white; padding: 20px 60px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.5rem; display: inline-block; margin-bottom: 25px; transition: 0.3s; }
-        .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; border-top: 1px solid #eee; padding-top: 25px; }
-        .doc-btn { padding: 12px; border: 2px solid var(--primary); border-radius: 8px; text-decoration: none; color: var(--primary); font-weight: bold; text-align: center; transition: 0.3s; }
-        .doc-btn:hover { background: var(--primary); color: white; }
+        /* וואטסאפ צף */
+        .wa-float { position: fixed; bottom: 30px; left: 30px; background: var(--whatsapp); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; z-index: 2000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
-        /* מפה וצור קשר */
-        .map-container iframe { width: 100%; height: 500px; border-radius: 20px; border: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-
-        /* כפתור וואטסאפ צף */
-        .wa-float { position: fixed; bottom: 30px; left: 30px; background: var(--whatsapp); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 10px; z-index: 2000; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s; }
-
-        /* Lightbox */
-        #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 3000; justify-content: center; align-items: center; }
-        #lightbox img { max-width: 85%; max-height: 85%; border: 3px solid white; border-radius: 5px; }
-        .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); color: white; border: none; font-size: 3rem; cursor: pointer; padding: 20px; border-radius: 50%; transition: 0.3s; }
-        .prev-arrow { right: 20px; } .next-arrow { left: 20px; }
-        .close-lb { position: absolute; top: 20px; left: 20px; background: none; border: none; color: white; font-size: 3rem; cursor: pointer; }
-
+        .map-container iframe { width: 100%; height: 450px; border-radius: 15px; border: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
         footer { background: var(--primary); color: white; text-align: center; padding: 30px; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.2rem; }
             header { flex-direction: column; gap: 15px; }
-            .logo img { height: 100px; }
             .rabbi-card { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <a href="#main-content" class="skip-link">דילוג לתוכן המרכזי</a>
+    <!-- תפריט נגישות -->
+    <div class="acc-btn" onclick="toggleAccMenu()" title="תפריט נגישות">♿</div>
+    <div class="acc-menu" id="accMenu">
+        <h3 style="margin-top:0">אפשרויות נגישות</h3>
+        <button onclick="changeFontSize(1.1)">הגדלת טקסט</button>
+        <button onclick="changeFontSize(0.9)">הקטנת טקסט</button>
+        <button onclick="toggleHighContrast()">ניגודיות גבוהה</button>
+        <button onclick="toggleLinksUnderline()">הדגשת קישורים</button>
+        <button onclick="resetAccessibility()" style="background:#ffebee; color:#c62828">איפוס הגדרות</button>
+    </div>
 
-    <header role="banner">
-        <div class="logo"><img src="logo.jpg" alt="לוגו אהבת ישראל"></div>
-        <nav role="navigation" aria-label="תפריט ראשי">
+    <header>
+        <div class="logo"><img src="logo.jpg" alt="אהבת ישראל"></div>
+        <nav>
             <ul>
-                <li><a href="#about">אודות</a></li>
-                <li><a href="#leadership">הנהגה</a></li>
+                <li><a href="#schedule">לו"ז זמנים</a></li>
                 <li><a href="#simchas">שמחות</a></li>
                 <li><a href="#gallery">הדמיות</a></li>
-                <li><a href="#donations">תרומות</a></li>
-                <li><a href="https://www.facebook.com/profile.php?id=100084124863151" target="_blank" aria-label="פייסבוק הקהילה">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="28" alt="Facebook">
-                </a></li>
+                <li><a href="#contact">מיקום</a></li>
             </ul>
         </nav>
     </header>
 
-    <main id="main-content">
+    <main>
         <section class="hero">
             <h1>בונים יחד את משכן הקבע בפסגות אפק</h1>
             <p><strong>קהילת אהבת ישראל – כאן הלב מרגיש בבית</strong></p>
         </section>
 
-        <section id="about">
-            <h2 class="section-title">הקהילה שלנו</h2>
-            <div class="content-box">
-                <p>בקיץ של שנת 2016, עברו מספר משפחות לגור בביתם החדש בשכונת פסגות אפק בראש העין. בשנים הראשונות התנהלה התפילה בבית ספר ובגן ילדים, ובהמשך, הצליחו לגייס את המבנה הנוכחי שבו אנו מתפללים לבית הכנסת (מבנה ציבורי). בית הכנסת קם עם חזון של שיתופיות, קבלה, הכלה, ואווירה חמה. עולים חדשים, ישראלים ותיקים, אשכנזים וספרדים הקימו בית כנסת וקהילה שההתנדבות היא מרכיב מרכזי שלה. ברוח מאמצי המשפחות החלוציות הללו שרצו לבנות משהו יפה ביחד, נולדה קהילה פורחת ומשגשגת.</p>
-                <p>קהילת אהבת ישראל כשמה כן היא, שמה לה למטרה להביא את כולם באהבה לקהילה שלנו - חברים, שכנים, בעלים, שוכרים, משפחות ואורחים - לבוא ולהצטרף לפעילויות השונות שבית הכנסת מציע. ככל שנמשיך לגדול ולהתפתח, אנו נשארים מחוייבים לשמירה על אווירת אחדות בה כולם ירגישו רצויים, ומחוייבים להתנדב ולעזור.</p>
-                <p><strong>כיום אנחנו מונים כ-200 בתי אב מסוגים שונים. הערכים המנחים את מעשינו והחלטותינו הם שמירה על דרך ארץ, אהבת הארץ ונאמנות מלאה לתורת ישראל ולמצוותיה, להגדיל תורה ולהאדירה.</strong></p>
+        <!-- סעיף לו"ז זמנים טקסטואלי -->
+        <section id="schedule" style="background: var(--light-bg);">
+            <h2 class="section-title">זמני תפילות ושיעורים</h2>
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <h3>ימי חול</h3>
+                    <div class="time-row"><span class="time-label">שחרית א'</span> <span class="time-value">06:00</span></div>
+                    <div class="time-row"><span class="time-label">שחרית ב'</span> <span class="time-value">07:00</span></div>
+                    <div class="time-row"><span class="time-label">מנחה</span> <span class="time-value">15 דק' לפני השקיעה</span></div>
+                    <div class="time-row"><span class="time-label">ערבית</span> <span class="time-value">20:00</span></div>
+                </div>
+
+                <div class="schedule-card">
+                    <h3>שבת קודש</h3>
+                    <div class="time-row"><span class="time-label">מנחה ערב שבת</span> <span class="time-value">10 דק' לאחר הדלקת נרות</span></div>
+                    <div class="time-row"><span class="time-label">שחרית שבת</span> <span class="time-value">08:00</span></div>
+                    <div class="time-row"><span class="time-label">שיעור תורה</span> <span class="time-value">שעה לפני מנחה</span></div>
+                    <div class="time-row"><span class="time-label">ערבית מוצ"ש</span> <span class="time-value">צאת השבת</span></div>
+                </div>
+
+                <div class="schedule-card" style="border-top-color: var(--primary);">
+                    <h3>אירועים קרובים</h3>
+                    <div class="time-row"><span class="time-label">ערב קהילתי חגיגי</span> <span class="time-value">23.03.2026</span></div>
+                    <div class="time-row"><span class="time-label">שיעור שבועי - נשים</span> <span class="time-value">ימי שלישי ב-20:30</span></div>
+                </div>
             </div>
         </section>
 
-        <section id="leadership" class="leadership-section">
-            <h2 class="section-title">הנהגת הקהילה</h2>
+        <section id="leadership">
             <div class="rabbi-card">
-                <img src="image_7cca70.png" alt="הרב מרדכי מנע שליט"א">
-                <div class="rabbi-info">
+                <img src="image_7cca70.png" alt="הרב מרדכי מנע">
+                <div class="info">
                     <h3>הרב מרדכי מנע שליט"א</h3>
                     <p>מוביל את הקהילה בהכוונה רוחנית ובבניית חיי קהילה מגובשים.</p>
                 </div>
@@ -154,59 +154,18 @@
             <h2 class="section-title">שמחות ואירועים</h2>
             <div class="form-container">
                 <form id="simchaForm">
-                    <div class="form-group">
-                        <label for="userName">שם מלא:</label>
-                        <input type="text" id="userName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="userPhone">טלפון:</label>
-                        <input type="tel" id="userPhone" required>
-                    </div>
+                    <div class="form-group"><label for="userName">שם מלא:</label><input type="text" id="userName" required></div>
+                    <div class="form-group"><label for="userPhone">טלפון:</label><input type="tel" id="userPhone" required></div>
                     <div class="form-group">
                         <label for="eventType">סוג האירוע:</label>
                         <select id="eventType">
                             <option value="בר מצווה">בר מצווה</option>
-                            <option value="ברית / זבד הבת">ברית / זבד הבת</option>
-                            <option value="עלייה לתורה">עלייה לתורה</option>
-                            <option value="אזכרה">אזכרה</option>
+                            <option value="ברית">ברית</option>
                             <option value="אחר">אחר</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="eventDate">תאריך משוער:</label>
-                        <input type="date" id="eventDate">
-                    </div>
-                    <div class="form-group">
-                        <label for="userMsg">בקשות מיוחדות:</label>
-                        <textarea id="userMsg" rows="3"></textarea>
-                    </div>
                     <button type="button" class="btn-submit" onclick="sendToWhatsApp()">שליחת בקשה בוואטסאפ</button>
                 </form>
-            </div>
-        </section>
-
-        <section id="gallery">
-            <h2 class="section-title">חזון המשכן</h2>
-            <div class="gallery">
-                <img src="1.jpg" alt="הדמיה 1" onclick="openLightbox(0)">
-                <img src="2.jpg" alt="הדמיה 2" onclick="openLightbox(1)">
-                <img src="3.jpg" alt="הדמיה 3" onclick="openLightbox(2)">
-                <img src="4.jpg" alt="הדמיה 4" onclick="openLightbox(3)">
-                <img src="5.jpg" alt="הדמיה 5" onclick="openLightbox(4)">
-                <img src="6.jpg" alt="הדמיה 6" onclick="openLightbox(5)">
-                <img src="7.jpg" alt="הדמיה 7" onclick="openLightbox(6)">
-            </div>
-        </section>
-
-        <section id="donations" style="background: var(--light-bg);">
-            <h2 class="section-title">תרומות ומסמכים</h2>
-            <div class="donation-card">
-                <a href="https://mrng.to/gevh48XXNf" class="btn-donate" target="_blank">לתרומה מאובטחת (סעיף 46) ➔</a>
-                <div class="docs-grid">
-                    <a href="plans.pdf" target="_blank" class="doc-btn">תוכניות בנייה 📄</a>
-                    <a href="seif46.pdf" target="_blank" class="doc-btn">אישור סעיף 46 📄</a>
-                    <a href="takin.pdf" target="_blank" class="doc-btn">ניהול תקין 📄</a>
-                </div>
             </div>
         </section>
 
@@ -216,88 +175,41 @@
                 <div class="info">
                     <h3>כתובת:</h3>
                     <p>אלוף הרב גורן 1, פסגות אפק, ראש העין</p>
-                    <h3>פניות:</h3>
-                    <p>שגיא עמוס: <a href="tel:0558830863" style="color: var(--primary); font-weight: bold;">055-8830863</a></p>
+                    <p>ליצירת קשר: 055-8830863</p>
                 </div>
                 <div class="map-container">
-                    <iframe 
-                        title="מפה: אלוף הרב גורן 1, ראש העין"
-                        src="https://maps.google.com/maps?q=אלוף%20הרב%20גורן%201%20ראש%20העין&t=&z=17&ie=UTF8&iwloc=&output=embed" 
-                        allowfullscreen="" loading="lazy">
-                    </iframe>
+                    <iframe src="https://maps.google.com/maps?q=אלוף%20הרב%20גורן%201%20ראש%20העין&t=&z=17&ie=UTF8&iwloc=&output=embed"></iframe>
                 </div>
             </div>
         </section>
     </main>
 
-    <div style="background: #333; color: white; padding: 20px 10%; font-size: 0.9rem;">
-        <strong>הצהרת נגישות:</strong> האתר מונגש ברמת AA. רכז נגישות: שגיא עמוס 055-8830863.
-    </div>
-
     <a href="https://wa.me/972558830863" class="wa-float" target="_blank">
-        <span>דברו איתנו בוואטסאפ</span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="25" alt="WhatsApp">
+        <span>וואטסאפ הקהילה</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="25" alt="WA">
     </a>
 
-    <div id="lightbox" onclick="closeLightbox()">
-        <button class="close-lb" onclick="closeLightbox()">×</button>
-        <button class="lb-arrow prev-arrow" onclick="event.stopPropagation(); changeImg(1)">❮</button>
-        <img id="lightbox-img" src="" alt="תמונה מוגדלת">
-        <button class="lb-arrow next-arrow" onclick="event.stopPropagation(); changeImg(-1)">❯</button>
-    </div>
-
-    <footer><p>© 2026 קהילת אהבת ישראל | עמותה רשומה 580665420</p></footer>
+    <footer><p>© 2026 קהילת אהבת ישראל | love-israel.co.il</p></footer>
 
     <script>
-        const images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg"];
-        let curIdx = 0;
-
-        function openLightbox(i) { 
-            curIdx = i; 
-            document.getElementById('lightbox-img').src = images[curIdx]; 
-            document.getElementById('lightbox').style.display = 'flex'; 
+        function toggleAccMenu() {
+            const m = document.getElementById('accMenu');
+            m.style.display = (m.style.display === 'block') ? 'none' : 'block';
         }
-
-        function closeLightbox() { 
-            document.getElementById('lightbox').style.display = 'none'; 
-        }
-
-        function changeImg(s) { 
-            curIdx = (curIdx + s + images.length) % images.length; 
-            document.getElementById('lightbox-img').src = images[curIdx]; 
-        }
+        let fSize = 1;
+        function changeFontSize(s) { fSize *= s; document.body.style.fontSize = fSize + 'em'; }
+        function toggleHighContrast() { document.body.classList.toggle('high-contrast'); }
+        function toggleLinksUnderline() { document.body.classList.toggle('underline-links'); }
+        function resetAccessibility() { document.body.className = ''; document.body.style.fontSize = '1em'; fSize = 1; }
 
         function sendToWhatsApp() {
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
             const event = document.getElementById('eventType').value;
-            const date = document.getElementById('eventDate').value;
-            const msg = document.getElementById('userMsg').value;
-
-            if (!name || !phone) {
-                alert("אנא מלאו שם וטלפון כדי שנוכל לחזור אליכם.");
-                return;
-            }
-
-            const whatsappNumber = "972558830863";
-            let messageText = `שלום, אני מעוניין לתאם שמחה בקהילה:%0A%0A`;
-            messageText += `*שם:* ${name}%0A`;
-            messageText += `*טלפון:* ${phone}%0A`;
-            messageText += `*סוג האירוע:* ${event}%0A`;
-            if(date) messageText += `*תאריך משוער:* ${date}%0A`;
-            if(msg) messageText += `*בקשות מיוחדות:* ${msg}`;
-
-            const url = `https://wa.me/${whatsappNumber}?text=${messageText}`;
-            window.open(url, '_blank').focus();
+            if(!name || !phone) { alert("אנא מלאו פרטים"); return; }
+            const msg = encodeURIComponent(`שלום, אני מעוניין לתאם ${event}. שם: ${name}, טלפון: ${phone}`);
+            window.open(`https://wa.me/972558830863?text=${msg}`, '_blank');
         }
-
-        document.addEventListener('keydown', (e) => {
-            if (document.getElementById('lightbox').style.display === 'flex') {
-                if (e.key === "ArrowLeft") changeImg(-1);
-                if (e.key === "ArrowRight") changeImg(1);
-                if (e.key === "Escape") closeLightbox();
-            }
-        });
     </script>
 </body>
 </html>
