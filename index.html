@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>קהילת אהבת ישראל | פסגות אפק ראש העין</title>
-    <!-- שיפור מהירות טעינת פונטים -->
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700;800&display=swap&text=אבגדהוזחטיכלמנסעפצקרשתםןץףך0123456789&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1a3a5f;
@@ -21,7 +20,7 @@
 
         body { font-family: 'Assistant', sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; }
 
-        /* נגישות */
+        /* נגישות - מצבים */
         body.accessible-font { font-size: 1.2em; }
         body.high-contrast { background: #000 !important; color: #fff !important; }
         body.high-contrast * { background: #000 !important; color: #ffff00 !important; border-color: #ffff00 !important; }
@@ -74,27 +73,9 @@
         .content-box { max-width: 950px; margin: 0 auto; text-align: justify; font-size: 1.25rem; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .content-box p { margin-bottom: 20px; }
 
-        /* הנהגת הקהילה - תיקון קריטי */
         .leadership-section { background: var(--light-bg); border-top: 5px solid var(--secondary); }
-        .rabbi-card { 
-            display: grid; /* מעבר ל-Grid במקום Flex */
-            grid-template-columns: 220px 1fr;
-            align-items: center; 
-            gap: 40px; 
-            max-width: 950px; 
-            margin: 0 auto; 
-            background: white; 
-            padding: 30px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08); 
-        }
-        .rabbi-card img { 
-            width: 100%; 
-            height: auto; 
-            border-radius: 15px; 
-            border: 4px solid var(--secondary);
-            display: block;
-        }
+        .rabbi-card { display: flex; align-items: center; gap: 40px; max-width: 950px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+        .rabbi-card img { width: 220px; height: auto; border-radius: 15px; border: 4px solid var(--secondary); flex-shrink: 0; }
 
         /* טופס פנייה */
         .form-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 700px; margin: 0 auto; }
@@ -122,6 +103,7 @@
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         .map-container iframe { width: 100%; height: 400px; border-radius: 20px; border: 0; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
 
+        /* נגישות */
         .a11y-toggle { position: fixed; top: 50%; right: 15px; transform: translateY(-50%); background: var(--primary); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 3001; font-size: 26px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; }
         .a11y-toolbar { position: fixed; top: 50%; right: 75px; transform: translateY(-50%); background: white; border: 2px solid var(--primary); border-radius: 10px; padding: 10px; z-index: 3000; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
         .a11y-btn { background: var(--primary); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 5px; font-weight: bold; font-size: 0.85rem; }
@@ -130,27 +112,28 @@
 
         footer { background: var(--primary); color: white; text-align: center; padding: 30px; }
 
-        /* --- התאמות לנייד --- */
+        /* --- התאמות לנייד - כולל התיקון שביקשת ושיפור מהירות --- */
         @media (max-width: 900px) {
             header { flex-direction: column; text-align: center; gap: 15px; }
             .header-right { flex-direction: column; gap: 10px; }
             nav ul { flex-wrap: wrap; justify-content: center; }
-            .a11y-toggle { right: 10px; width: 45px; height: 45px; font-size: 22px; }
-
-            /* פתרון סופי לטקסט שנדחף */
+            
+            /* תיקון קריטי: הטקסט של הרב יופיע מתחת לתמונה ולא יידחף הצידה */
             .rabbi-card { 
-                grid-template-columns: 1fr !important; /* כוח טור יחיד */
+                flex-direction: column !important; 
                 text-align: center; 
                 padding: 20px;
-                gap: 15px;
+                gap: 20px;
             }
             .rabbi-card img {
-                width: 240px !important;
-                margin: 0 auto !important;
+                width: 200px;
+                margin: 0 auto;
             }
             .rabbi-info {
                 width: 100%;
             }
+
+            .a11y-toggle { right: 10px; width: 45px; height: 45px; font-size: 22px; }
         }
     </style>
 </head>
@@ -182,7 +165,6 @@
                 </ul>
             </nav>
         </div>
-
         <div class="social-links">
             <a href="https://wa.me/972558830863" target="_blank" class="social-icon">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
@@ -194,8 +176,7 @@
     </header>
 
     <main id="main-content">
-        <!-- הוספת fetchpriority לשיפור מהירות הטעינה של החלק העליון -->
-        <section class="hero" style="content-visibility: auto;">
+        <section class="hero">
             <h1>בונים יחד את משכן הקבע בפסגות אפק</h1>
             <p><strong>קהילת אהבת ישראל – כאן הלב מרגיש בבית</strong></p>
         </section>
@@ -258,7 +239,7 @@
         <section id="gallery">
             <h2 class="section-title">חזון המשכן</h2>
             <div class="gallery">
-                <!-- הוספת loading="lazy" לשיפור מהירות -->
+                <!-- הוספת טעינה עצלה (Lazy Loading) לכל התמונות לשיפור מהירות -->
                 <img src="1.jpg" alt="הדמיה 1" onclick="openLightbox(0)" loading="lazy" decoding="async">
                 <img src="2.jpg" alt="הדמיה 2" onclick="openLightbox(1)" loading="lazy" decoding="async">
                 <img src="3.jpg" alt="הדמיה 3" onclick="openLightbox(2)" loading="lazy" decoding="async">
@@ -300,6 +281,7 @@
                     <p>שגיא עמוס: <a href="tel:0558830863" style="color: var(--primary); font-weight: bold;">055-8830863</a></p>
                 </div>
                 <div class="map-container">
+                    <!-- הוספת טעינה עצלה למפה -->
                     <iframe title="מפה" src="https://maps.google.com/maps?q=אלוף%20הרב%20גורן%201%20ראש%20העין&t=&z=17&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
@@ -318,7 +300,7 @@
 
     <!-- Lightbox -->
     <div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:5000; justify-content:center; align-items:center;">
-        <button onclick="closeLightbox()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:40px; cursor:pointer;">×</button>
+        <button onclick="closeLightbox()" style="position:absolute; top:20px; right:20px; color:white; font-size:40px; background:none; border:none; cursor:pointer;">×</button>
         <img id="lightbox-img" src="" style="max-width:90%; max-height:80%; border-radius:10px;" decoding="async">
     </div>
 
@@ -335,8 +317,10 @@
         function resetA11y() { document.body.className = ''; document.documentElement.style.fontSize = ''; }
 
         const images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg"];
+        let curIdx = 0;
         function openLightbox(i) {
-            document.getElementById('lightbox-img').src = images[i];
+            curIdx = i;
+            document.getElementById('lightbox-img').src = images[curIdx];
             document.getElementById('lightbox').style.display = 'flex';
         }
         function closeLightbox() { document.getElementById('lightbox').style.display = 'none'; }
@@ -345,8 +329,12 @@
             const name = document.getElementById('userName').value;
             const phone = document.getElementById('userPhone').value;
             const event = document.getElementById('eventType').value;
+            const date = document.getElementById('eventDate').value;
+            const msg = document.getElementById('userMsg').value;
             if (!name || !phone) { alert("אנא מלאו שם וטלפון"); return; }
-            let messageText = `שלום, אני מעוניין במידע על שמחה בקהילה:%0A*שם:* ${name}%0A*טלפון:* ${phone}%0A*סוג:* ${event}`;
+            let messageText = `שלום, אני מעוניין במידע על שמחה בקהילה:%0A%0A*שם:* ${name}%0A*טלפון:* ${phone}%0A*סוג:* ${event}`;
+            if(date) messageText += `%0A*תאריך:* ${date}`;
+            if(msg) messageText += `%0A*הערות:* ${msg}`;
             window.open(`https://wa.me/972558830863?text=${messageText}`, '_blank');
         }
     </script>
