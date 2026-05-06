@@ -75,7 +75,7 @@
 
         .leadership-section { background: var(--light-bg); border-top: 5px solid var(--secondary); }
         .rabbi-card { display: flex; align-items: center; gap: 40px; max-width: 950px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
-        .rabbi-card img { width: 220px; height: auto; border-radius: 15px; border: 4px solid var(--secondary); flex-shrink: 0; }
+        .rabbi-card img { width: 220px; height: auto; border-radius: 15px; border: 4px solid var(--secondary); }
 
         /* טופס פנייה */
         .form-container { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 700px; margin: 0 auto; }
@@ -150,16 +150,19 @@
             nav ul { flex-wrap: wrap; justify-content: center; }
             .a11y-toggle { right: 10px; width: 45px; height: 45px; font-size: 22px; }
 
-            /* תיקון כרטיס הרב - שהטקסט יופיע מתחת לתמונה */
+            /* התיקון שביקשת: כרטיס הרב בנייד */
             .rabbi-card { 
-                flex-direction: column; 
+                flex-direction: column !important; /* כופה מעבר לטור */
                 text-align: center; 
                 padding: 20px;
                 gap: 20px;
             }
             .rabbi-card img {
-                width: 200px;
+                width: 200px !important; /* מקבע גודל תמונה בנייד */
                 margin: 0 auto;
+            }
+            .rabbi-info {
+                width: 100%; /* מוודא שהטקסט תופס את כל הרוחב ולא נדחף הצידה */
             }
         }
     </style>
@@ -168,7 +171,6 @@
 
     <a href="#main-content" class="skip-link">דילוג לתוכן המרכזי</a>
 
-    <!-- תפריט נגישות הממוקם במרכז-ימין -->
     <button class="a11y-toggle" onclick="toggleA11yMenu()" aria-label="פתח תפריט נגישות">♿</button>
     <div class="a11y-toolbar" id="a11yMenu" style="display: none;">
         <button class="a11y-btn" onclick="adjustFont(1.1)">➕ הגדל טקסט</button>
@@ -325,9 +327,8 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="25" alt="">
     </a>
 
-    <!-- Lightbox -->
     <div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:5000; justify-content:center; align-items:center;">
-        <button class="close-lb" onclick="closeLightbox()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:40px; cursor:pointer;">×</button>
+        <button onclick="closeLightbox()" style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:40px; cursor:pointer;">×</button>
         <img id="lightbox-img" src="" style="max-width:90%; max-height:80%; border-radius:10px;">
     </div>
 
